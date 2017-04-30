@@ -6,7 +6,7 @@ import {
   TouchableHighlight
 } from 'react-native';
 
-class Detail extends Component {
+class Settings extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -14,7 +14,7 @@ class Detail extends Component {
           <Text>Back</Text>
         </TouchableHighlight>
 
-        <Text>{this.props.text}</Text>
+        <Text>Settings</Text>
 
       </View>
     );
@@ -32,4 +32,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Detail
+export default Settings

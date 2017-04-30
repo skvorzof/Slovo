@@ -4,7 +4,8 @@ import {
     Text,
     View,
     FlatList,
-    TouchableHighlight
+    TouchableHighlight,
+    StatusBar
 } from 'react-native';
 
 const preyers = require('./data.json');
@@ -39,6 +40,14 @@ class List extends Component {
 
         return (
             <View style={styles.container}>
+                <StatusBar hidden />
+                
+                <Text>Молитвослов</Text>
+
+                <TouchableHighlight style={styles.touch} onPress={() => this.navigate('Settings')}>
+                    <Text>Settings</Text>
+                </TouchableHighlight>
+
                 <View>
                     {/*<Text>Молитвы</Text>*/}
                     <FlatList
@@ -66,10 +75,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#FFFFFF',
-        marginTop: 20
+        padding: 15
     },
     touch: {
-        height: 30
+        height: 20
     }
 });
 
