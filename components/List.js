@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 const preyers = require('./data.json');
+const preyers2 = require('./data.json');
 
 class List extends Component {
     constructor() {
@@ -23,45 +24,53 @@ class List extends Component {
         })
     }
 
+    _renderItem(item) {
+        return (
+            <TouchableHighlight style={styles.touch} onPress={() => this.navigate('Detail', item.text)}>
+                <Text>{item.title}</Text>
+            </TouchableHighlight>
+        )
+    }
+
+    _key = (item, index) => item.title;
 
 
     render() {
 
-        _renderItem(item) {
-            return (
-                <TouchableHighlight onPress={() => this.navigate('Detail', 'Hello!')}>
-                    <Text>{item.title}</Text>
-                </TouchableHighlight>
-            )
-        }
-
         return (
             <View style={styles.container}>
+                <View>
+                    {/*<Text>Молитвы</Text>*/}
+                    <FlatList
+                        data={preyers}
+                        keyExtractor={this._key}
+                        renderItem={({ item }) => this._renderItem(item)}
+                    />
+                </View>
 
-
-                <FlatList
-                    data={preyers}
-                    renderItem={({ item }) => this._renderItem(item)}
-                />
+                {/*<View>
+                    <Text>Акафисты</Text>
+                    <FlatList
+                        data={preyers2}
+                        renderItem={({ item }) => this._renderItem(item)}
+                    />
+                </View>*/}
 
             </View>
         );
     }
 }
 
-/*<Text>HOME</Text>
-
-<TouchableHighlight onPress={() => this.navigate('Detail', 'Hello!')}>
-    <Text>Click</Text>
-</TouchableHighlight>*/
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
         backgroundColor: '#FFFFFF',
+        marginTop: 20
     },
+    touch: {
+        height: 30
+    }
 });
 
 export default List
