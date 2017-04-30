@@ -6,6 +6,8 @@ import {
   TouchableHighlight
 } from 'react-native';
 
+import HTMLView from 'react-native-htmlview';
+
 class Detail extends Component {
   render() {
     return (
@@ -14,7 +16,10 @@ class Detail extends Component {
           <Text>Back</Text>
         </TouchableHighlight>
 
-        <Text>{this.props.text}</Text>
+        <HTMLView 
+        value={this.props.text}
+        stylesheet={styles}
+        />
 
       </View>
     );
@@ -30,6 +35,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     padding: 15
   },
+  i: {
+    color: 'red',
+  }
 });
 
 export default Detail
