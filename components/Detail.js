@@ -10,14 +10,12 @@ class Detail extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>
-          DETAIL
-        </Text>
-        <Text>{this.props.text}</Text>
-
         <TouchableHighlight onPress={() => this.props.navigator.pop()}>
           <Text>Back</Text>
         </TouchableHighlight>
+        
+        <Text>{this.props.text}</Text>
+
       </View>
     );
   }
@@ -26,9 +24,11 @@ class Detail extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // backgroundColor: '#F5FCFF',
+    backgroundColor: '#FFFFFF',
+    marginTop: 20
   },
 });
 
