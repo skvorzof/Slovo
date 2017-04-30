@@ -1,0 +1,47 @@
+import React, { Component } from 'react';
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View,
+  Navigator
+} from 'react-native';
+
+import List from './components/List';
+import Detail from './components/Detail';
+
+export default class App extends Component {
+  constructor() {
+    super()
+    this.renderScene = this.renderScene.bind(this)
+  }
+
+  renderScene(route, navigator) {
+    if(route.name === 'List') {
+      return <List navigator = { navigator } />
+    } else if(route.name === 'Detail') {
+      return <Detail navigator = { navigator } text = { route.text } />
+    }
+  }
+
+  render() {
+    return (
+      <Navigator 
+      initialRoute = {{ name: 'List' }}
+      renderScene = { this.renderScene }
+      />
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  
+});
+
+AppRegistry.registerComponent('App', () => App);
