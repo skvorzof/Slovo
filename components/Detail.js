@@ -27,6 +27,8 @@ class Detail extends Component {
   }
 }
 
+const font = 20;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -37,14 +39,17 @@ const styles = StyleSheet.create({
     color: 'red',
     fontStyle: 'italic',
     fontFamily: 'Georgia',
+    fontSize: font,
   },
   h2: {
     fontFamily: 'Georgia',
+    fontWeight: 'bold',
     color: 'red',
-    fontSize: 23
+    fontSize: (font * 1.3),
   },
   p: {
     fontFamily: 'Georgia',
+    fontSize: font,
   }
 });
 

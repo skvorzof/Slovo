@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 
 const preyers = require('./data.json');
-const preyers2 = require('./data.json');
 
 class List extends Component {
     constructor() {
