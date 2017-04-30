@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View,
-  TouchableHighlight
+  TouchableHighlight,
+  ScrollView
 } from 'react-native';
 
 import HTMLView from 'react-native-htmlview';
@@ -11,17 +11,18 @@ import HTMLView from 'react-native-htmlview';
 class Detail extends Component {
   render() {
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
+
         <TouchableHighlight onPress={() => this.props.navigator.pop()}>
           <Text>Back</Text>
         </TouchableHighlight>
 
-        <HTMLView 
-        value={this.props.text}
-        stylesheet={styles}
+        <HTMLView
+          value={this.props.text}
+          stylesheet={styles}
         />
 
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -29,14 +30,21 @@ class Detail extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // backgroundColor: '#F5FCFF',
     backgroundColor: '#FFFFFF',
     padding: 15
   },
-  i: {
+  em: {
     color: 'red',
+    fontStyle: 'italic',
+    fontFamily: 'Georgia',
+  },
+  h2: {
+    fontFamily: 'Georgia',
+    color: 'red',
+    fontSize: 23
+  },
+  p: {
+    fontFamily: 'Georgia',
   }
 });
 
