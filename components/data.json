@@ -1,0 +1,10 @@
+[
+    {
+        title: 'Title 1',
+        body: 'Some text 1'
+    },
+    {
+        title: 'Title 2',
+        body: 'Some text 2'
+    }
+]

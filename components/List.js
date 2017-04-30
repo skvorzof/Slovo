@@ -3,8 +3,11 @@ import {
     StyleSheet,
     Text,
     View,
+    FlatList,
     TouchableHighlight
 } from 'react-native';
+
+const preyers = require('./data.json');
 
 class List extends Component {
     constructor() {
@@ -19,21 +22,38 @@ class List extends Component {
             text
         })
     }
-    
+
+
+
     render() {
+
+        _renderItem(item) {
+            return (
+                <TouchableHighlight onPress={() => this.navigate('Detail', 'Hello!')}>
+                    <Text>{item.title}</Text>
+                </TouchableHighlight>
+            )
+        }
+
         return (
             <View style={styles.container}>
-                <Text>
-                    HOME
-        </Text>
 
-                <TouchableHighlight onPress={() => this.navigate('Detail', 'Hello!')}>
-                    <Text>Click</Text>
-                </TouchableHighlight>
+
+                <FlatList
+                    data={preyers}
+                    renderItem={({ item }) => this._renderItem(item)}
+                />
+
             </View>
         );
     }
 }
+
+/*<Text>HOME</Text>
+
+<TouchableHighlight onPress={() => this.navigate('Detail', 'Hello!')}>
+    <Text>Click</Text>
+</TouchableHighlight>*/
 
 const styles = StyleSheet.create({
     container: {
