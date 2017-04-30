@@ -41,8 +41,8 @@ class List extends Component {
         return (
             <View style={styles.container}>
                 <StatusBar hidden />
-                
-                <Text>Молитвослов</Text>
+
+                <Text style={styles.title}>Молитвослов</Text>
 
                 <TouchableHighlight style={styles.touch} onPress={() => this.navigate('Settings')}>
                     <Text>Settings</Text>
@@ -75,7 +75,13 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#FFFFFF',
-        padding: 15
+        padding: 15,
+        paddingTop: 5,
+    },
+    title: {
+        fontSize: 23,
+        fontWeight: 'bold',
+        textAlign: 'center',
     },
     touch: {
         height: 20
