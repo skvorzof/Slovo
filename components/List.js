@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import {
     StyleSheet,
-    Text,
     View,
+    Text,
+    TouchableOpacity,
     FlatList,
     TouchableHighlight,
     StatusBar
 } from 'react-native';
-
-const preyers = require('./data.json');
+import { preyers } from './data';
 
 class List extends Component {
     constructor() {
@@ -32,26 +32,23 @@ class List extends Component {
         )
     }
 
-    _key = (item, index) => item.title;
-
-
     render() {
-
+        console.log(preyers);
         return (
             <View style={styles.container}>
                 <StatusBar hidden />
 
                 <Text style={styles.title}>Молитвослов</Text>
 
-                <TouchableHighlight style={styles.touch} onPress={() => this.navigate('Settings')}>
-                    <Text>Settings</Text>
-                </TouchableHighlight>
+                <TouchableOpacity style={styles.touch} onPress={() => this.navigate('Settings')}>
+                    <Text>Настройки</Text>
+                </TouchableOpacity>
 
                 <View>
                     {/*<Text>Молитвы</Text>*/}
                     <FlatList
                         data={preyers}
-                        keyExtractor={this._key}
+                        keyExtractor={item => item.title}
                         renderItem={({ item }) => this._renderItem(item)}
                     />
                 </View>
@@ -74,7 +71,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#FFFFFF',
-        padding: 15,
+        paddingHorizontal: 15,
         paddingTop: 5,
     },
     title: {
