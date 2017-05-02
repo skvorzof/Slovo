@@ -33,7 +33,6 @@ class List extends Component {
     }
 
     render() {
-        console.log(preyers);
         return (
             <View style={styles.container}>
                 <StatusBar hidden />

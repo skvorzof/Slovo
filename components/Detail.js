@@ -8,22 +8,50 @@ import {
 } from 'react-native';
 
 import HTMLView from 'react-native-htmlview';
-const v = 'Дмитрий';
+
 class Detail extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      visibleHeight: 40
+    }
+  }
+
+  onScroll(event) {
+    var currentOffset = event.nativeEvent.contentOffset.y;
+    var direction = currentOffset > this.offset ? 'down' : 'up';
+    this.offset = currentOffset;
+
+    if (direction === 'down') {
+      this.setState({
+        visibleHeight: 0
+      })
+
+    }
+    if (direction === 'up') {
+      this.setState({
+        visibleHeight: 40
+      })
+
+    }
+
+  }
+
   render() {
     return (
       <View style={styles.container}>
 
         <TouchableOpacity
+          visible={false}
           style={styles.button}
           onPress={() => this.props.navigator.pop()}>
-          <Text>Back</Text>
+          <Text style={{ height: this.state.visibleHeight }}>Back</Text>
         </TouchableOpacity>
 
         <ScrollView
-          ref={(scrollView) => { _scrollView = scrollView; }}
-          onScroll={() => { console.log('onScroll!'); }}
-          scrollEventThrottle={200}
+          onScroll={(event) => { this.onScroll(event) }}
+          scrollEventThrottle={20}
         >
 
           <HTMLView
