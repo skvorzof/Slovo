@@ -1,28 +1,39 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
+  View,
+  ScrollView,
   Text,
-  TouchableHighlight,
-  ScrollView
+  TouchableOpacity,
 } from 'react-native';
 
 import HTMLView from 'react-native-htmlview';
-
+const v = 'Дмитрий';
 class Detail extends Component {
   render() {
     return (
-      <ScrollView style={styles.container}>
+      <View style={styles.container}>
 
-        <TouchableHighlight onPress={() => this.props.navigator.pop()}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => this.props.navigator.pop()}>
           <Text>Back</Text>
-        </TouchableHighlight>
+        </TouchableOpacity>
 
-        <HTMLView
-          value={this.props.text}
-          stylesheet={styles}
-        />
+        <ScrollView
+          ref={(scrollView) => { _scrollView = scrollView; }}
+          onScroll={() => { console.log('onScroll!'); }}
+          scrollEventThrottle={200}
+        >
 
-      </ScrollView>
+          <HTMLView
+            value={this.props.text}
+            stylesheet={styles}
+          />
+
+        </ScrollView>
+
+      </View>
     );
   }
 }
@@ -33,7 +44,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFFFF',
-    padding: 15
+    paddingHorizontal: 15
   },
   em: {
     color: 'red',
