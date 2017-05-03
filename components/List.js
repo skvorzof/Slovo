@@ -37,11 +37,16 @@ class List extends Component {
             <View style={styles.container}>
                 <StatusBar hidden />
 
+                <View style={styles.navbar}>
+
+                <Text style={styles.left}></Text>
                 <Text style={styles.title}>Молитвослов</Text>
 
-                <TouchableOpacity style={styles.touch} onPress={() => this.navigate('Settings')}>
+                <TouchableOpacity style={[styles.touch, styles.left ]} onPress={() => this.navigate('Settings')}>
                     <Text>Настройки</Text>
                 </TouchableOpacity>
+
+                </View>
 
                 <View>
                     {/*<Text>Молитвы</Text>*/}
@@ -73,7 +78,15 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         paddingTop: 5,
     },
+    navbar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  left: {
+      flex: 1
+  },
     title: {
+        flex: 2,
         fontSize: 23,
         fontWeight: 'bold',
         textAlign: 'center',
