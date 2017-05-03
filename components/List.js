@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     navbar: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignContent: 'center'
+        alignItems: 'center'
     },
     left: {
         flex: 1
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     },
     title: {
         flex: 2,
-        fontSize: 23,
+        fontSize: 20,
         fontWeight: 'bold',
         textAlign: 'center',
     },

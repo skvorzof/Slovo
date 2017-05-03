@@ -8,6 +8,22 @@ import {
 } from 'react-native';
 
 class Settings extends Component {
+
+  constructor() {
+    super()
+    this.state = {
+      name: ''
+    }
+  }
+
+  changeName(name) {
+    this.setState({ name })
+  }
+
+  saveData() {
+
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -25,7 +41,7 @@ class Settings extends Component {
 
           <TouchableOpacity
             style={styles.right}
-            >
+          >
             <Text>Сохранить</Text>
           </TouchableOpacity>
 
@@ -46,7 +62,8 @@ const styles = StyleSheet.create({
   },
   navbar: {
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
   left: {
     flex: 1
@@ -57,8 +74,9 @@ const styles = StyleSheet.create({
   },
   title: {
     flex: 2,
-    fontSize: 23,
+    fontSize: 20,
     fontWeight: 'bold',
+    textAlign: 'center',
   },
 });
 
