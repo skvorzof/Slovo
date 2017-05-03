@@ -16,14 +16,18 @@ class Settings extends Component {
 
 
           <TouchableOpacity
-            style={[styles.touch, styles.left ]}
+            style={styles.left}
             onPress={() => this.props.navigator.pop()}>
             <Text>Back</Text>
           </TouchableOpacity>
 
           <Text style={styles.title}>Настройки</Text>
-          
-          <Text style={styles.left}></Text>
+
+          <TouchableOpacity
+            style={styles.right}
+            >
+            <Text>Сохранить</Text>
+          </TouchableOpacity>
 
         </View>
 
@@ -37,7 +41,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFFFF',
-    paddingHorizontal: 15,
+    paddingHorizontal: 7,
     paddingTop: 5,
   },
   navbar: {
@@ -45,9 +49,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   left: {
-      flex: 1
+    flex: 1
+  },
+  right: {
+    flex: 1,
+    alignItems: 'flex-end'
   },
   title: {
+    flex: 2,
     fontSize: 23,
     fontWeight: 'bold',
   },

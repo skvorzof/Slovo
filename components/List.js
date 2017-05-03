@@ -39,12 +39,12 @@ class List extends Component {
 
                 <View style={styles.navbar}>
 
-                <Text style={styles.left}></Text>
-                <Text style={styles.title}>Молитвослов</Text>
+                    <Text style={styles.left}></Text>
+                    <Text style={styles.title}>Молитвослов</Text>
 
-                <TouchableOpacity style={[styles.touch, styles.left ]} onPress={() => this.navigate('Settings')}>
-                    <Text>Настройки</Text>
-                </TouchableOpacity>
+                    <TouchableOpacity style={styles.right} onPress={() => this.navigate('Settings')}>
+                        <Text>Настройки</Text>
+                    </TouchableOpacity>
 
                 </View>
 
@@ -75,25 +75,28 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#FFFFFF',
-        paddingHorizontal: 15,
+        paddingHorizontal: 7,
         paddingTop: 5,
     },
     navbar: {
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  },
-  left: {
-      flex: 1
-  },
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignContent: 'center'
+    },
+    left: {
+        flex: 1
+    },
+    right: {
+        flex: 1,
+        alignItems: 'flex-end'
+    },
     title: {
         flex: 2,
         fontSize: 23,
         fontWeight: 'bold',
         textAlign: 'center',
     },
-    touch: {
-        height: 20
-    }
+
 });
 
 export default List
