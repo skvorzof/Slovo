@@ -5,6 +5,7 @@ import {
   ScrollView,
   Text,
   TouchableOpacity,
+  Image
 } from 'react-native';
 
 import HTMLView from 'react-native-htmlview';
@@ -14,7 +15,7 @@ class Detail extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      visibleHeight: 40
+      visibleHeight: 30
     }
   }
 
@@ -44,9 +45,12 @@ class Detail extends Component {
 
         <TouchableOpacity
           visible={false}
-          style={styles.button}
+          style={{ height: this.state.visibleHeight }}
           onPress={() => this.props.navigator.pop()}>
-          <Text style={{ height: this.state.visibleHeight }}>Back</Text>
+          <Image
+            style={{ width: 11, height: 19, marginTop: 8 }}
+            source={require('./lnr-chevron-left.png')}
+          />
         </TouchableOpacity>
 
         <ScrollView
@@ -77,17 +81,18 @@ const styles = StyleSheet.create({
   em: {
     color: 'red',
     fontStyle: 'italic',
-    fontFamily: 'Georgia',
+    fontFamily: 'Times New Roman',
     fontSize: font,
   },
   h2: {
-    fontFamily: 'Georgia',
+    fontFamily: 'Times New Roman',
     fontWeight: 'bold',
     color: 'red',
     fontSize: (font * 1.3),
   },
   p: {
-    fontFamily: 'Georgia',
+    color: '#121212',
+    fontFamily: 'Times New Roman',
     fontSize: font,
   }
 });

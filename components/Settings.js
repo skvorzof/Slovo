@@ -5,6 +5,7 @@ import {
   Text,
   View,
   TouchableOpacity,
+  Image,
   TextInput
 } from 'react-native';
 
@@ -12,7 +13,7 @@ class Settings extends Component {
 
   constructor(props) {
     super(props)
-    this.state = { name: 'Иван' }
+    this.state = { name: 'Имя' }
     AsyncStorage.getItem('name').then((name) => {
       this.setState({ 'name': name })
     })
@@ -34,7 +35,10 @@ class Settings extends Component {
           <TouchableOpacity
             style={styles.left}
             onPress={() => this.props.navigator.pop()}>
-            <Text>Back</Text>
+            <Image
+              style={{ width: 11, height: 19, marginTop: 8 }}
+              source={require('./lnr-chevron-left.png')}
+            />
           </TouchableOpacity>
 
           <Text style={styles.title}>Настройки</Text>
@@ -48,13 +52,11 @@ class Settings extends Component {
         </View>
 
 
-        <Text>Name</Text>
+        <Text>Ведите имена</Text>
         <TextInput
           style={styles.input}
           value={this.state.name}
           onChangeText={(text) => this.saveData(text)} />
-
-          <Text>Name -> {this.state.name}</Text>
 
 
       </View>
@@ -72,7 +74,8 @@ const styles = StyleSheet.create({
   navbar: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom: 20
   },
   left: {
     flex: 1

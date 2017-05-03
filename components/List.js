@@ -4,15 +4,21 @@ import {
     View,
     Text,
     TouchableOpacity,
+    Image,
     FlatList,
     TouchableHighlight,
-    StatusBar
+    StatusBar,
+    AsyncStorage
 } from 'react-native';
 import { preyers } from './data';
 
 class List extends Component {
     constructor() {
         super()
+        this.state = { name: 'Имя' }
+        AsyncStorage.getItem('name').then((name) => {
+            this.setState({ 'name': name })
+        })
 
         this.navigate = this.navigate.bind(this)
     }
@@ -27,7 +33,7 @@ class List extends Component {
     _renderItem(item) {
         return (
             <TouchableHighlight style={styles.touch} onPress={() => this.navigate('Detail', item.text)}>
-                <Text>{item.title}</Text>
+                <Text style={styles.touchTxt}>{item.title}</Text>
             </TouchableHighlight>
         )
     }
@@ -43,7 +49,10 @@ class List extends Component {
                     <Text style={styles.title}>Молитвослов</Text>
 
                     <TouchableOpacity style={styles.right} onPress={() => this.navigate('Settings')}>
-                        <Text>Настройки</Text>
+                        <Image
+                            style={{ width: 16, height: 11 }}
+                            source={require('./lnr-menu.png')}
+                        />
                     </TouchableOpacity>
 
                 </View>
@@ -57,13 +66,9 @@ class List extends Component {
                     />
                 </View>
 
-                {/*<View>
-                    <Text>Акафисты</Text>
-                    <FlatList
-                        data={preyers2}
-                        renderItem={({ item }) => this._renderItem(item)}
-                    />
-                </View>*/}
+                
+
+                <Text style={{marginTop: 50}}>Имя {this.state.name}</Text>
 
             </View>
         );
@@ -81,7 +86,9 @@ const styles = StyleSheet.create({
     navbar: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginBottom: 20
+
     },
     left: {
         flex: 1
@@ -96,6 +103,10 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
     },
+    touchTxt: {
+        fontSize: 18,
+        paddingVertical: 5,
+    }
 
 });
 
