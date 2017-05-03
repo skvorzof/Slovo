@@ -4,32 +4,32 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity
+  TouchableOpacity,
+  TextInput
 } from 'react-native';
 
 class Settings extends Component {
 
-  constructor() {
-    super()
-    this.state = {
-      name: ''
-    }
+  constructor(props) {
+    super(props)
+    this.state = { name: 'Иван' }
+    AsyncStorage.getItem('name').then((name) => {
+      this.setState({ 'name': name })
+    })
   }
 
-  changeName(name) {
-    this.setState({ name })
+  saveData(name) {
+    AsyncStorage.setItem('name', name)
+    this.setState({ 'name': name })
   }
 
-  saveData() {
 
-  }
 
   render() {
     return (
       <View style={styles.container}>
 
         <View style={styles.navbar}>
-
 
           <TouchableOpacity
             style={styles.left}
@@ -46,6 +46,15 @@ class Settings extends Component {
           </TouchableOpacity>
 
         </View>
+
+
+        <Text>Name</Text>
+        <TextInput
+          style={styles.input}
+          value={this.state.name}
+          onChangeText={(text) => this.saveData(text)} />
+
+          <Text>Name -> {this.state.name}</Text>
 
 
       </View>
@@ -78,6 +87,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  input: {
+    height: 30,
+    backgroundColor: '#EEEEEE'
+  }
 });
 
 export default Settings
