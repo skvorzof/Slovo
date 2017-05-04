@@ -7,20 +7,17 @@ import {
     Image,
     FlatList,
     StatusBar,
-    AsyncStorage
 } from 'react-native';
 import { preyers } from './data';
 
 class List extends Component {
     constructor() {
         super()
-        this.state = { name: 'Имя' }
-        AsyncStorage.getItem('name').then((name) => {
-            this.setState({ 'name': name })
-        })
 
         this.navigate = this.navigate.bind(this)
     }
+
+
 
     navigate(name, title, text) {
         this.props.navigator.push({
@@ -58,7 +55,6 @@ class List extends Component {
                 </View>
 
                 <View>
-                    {/*<Text>Молитвы</Text>*/}
                     <FlatList
                         data={preyers}
                         keyExtractor={item => item.title}
