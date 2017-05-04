@@ -6,7 +6,6 @@ import {
     TouchableOpacity,
     Image,
     FlatList,
-    TouchableHighlight,
     StatusBar,
     AsyncStorage
 } from 'react-native';
@@ -33,9 +32,9 @@ class List extends Component {
 
     _renderItem(item) {
         return (
-            <TouchableHighlight style={styles.touch} onPress={() => this.navigate('Detail', item.title, item.text)}>
+            <TouchableOpacity style={styles.touch} onPress={() => this.navigate('Detail', item.title, item.text)}>
                 <Text style={styles.touchTxt}>{item.title}</Text>
-            </TouchableHighlight>
+            </TouchableOpacity>
         )
     }
 
@@ -67,9 +66,6 @@ class List extends Component {
                     />
                 </View>
 
-
-
-                <Text style={{marginTop: 50}}>Имя {this.state.name}</Text>
 
             </View>
         );
@@ -105,8 +101,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     touchTxt: {
-        fontSize: 18,
-        paddingVertical: 5,
+        fontSize: 20,
+        paddingVertical: 7,
     }
 });
 

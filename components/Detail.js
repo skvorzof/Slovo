@@ -74,6 +74,14 @@ class Detail extends Component {
                         stylesheet={styles}
                     />
 
+                    <View style={{flex:1, alignItems: 'center', marginTop: 100, marginBottom: 150}}>
+                        <Image
+                            style={{width: 11, height: 19, marginTop: 8}}
+                            source={require('./lnr-chevron-left.png')}
+                        />
+
+                    </View>
+
                 </ScrollView>
 
             </View>
@@ -123,7 +131,7 @@ const styles = StyleSheet.create({
         color: '#121212',
         fontFamily: 'Times New Roman',
         fontSize: font,
-    }
+    },
 });
 
 export default Detail
