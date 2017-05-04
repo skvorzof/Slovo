@@ -23,16 +23,17 @@ class List extends Component {
         this.navigate = this.navigate.bind(this)
     }
 
-    navigate(name, text) {
+    navigate(name, title, text) {
         this.props.navigator.push({
             name,
+            title,
             text
         })
     }
 
     _renderItem(item) {
         return (
-            <TouchableHighlight style={styles.touch} onPress={() => this.navigate('Detail', item.text)}>
+            <TouchableHighlight style={styles.touch} onPress={() => this.navigate('Detail', item.title, item.text)}>
                 <Text style={styles.touchTxt}>{item.title}</Text>
             </TouchableHighlight>
         )
@@ -66,7 +67,7 @@ class List extends Component {
                     />
                 </View>
 
-                
+
 
                 <Text style={{marginTop: 50}}>Имя {this.state.name}</Text>
 
@@ -107,7 +108,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
         paddingVertical: 5,
     }
-
 });
 
 export default List

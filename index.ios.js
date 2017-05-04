@@ -19,7 +19,7 @@ export default class App extends Component {
     if(route.name === 'List') {
       return <List navigator = { navigator } />
     } else if(route.name === 'Detail') {
-      return <Detail navigator = { navigator } text = { route.text } />
+      return <Detail navigator = { navigator } title = { route.title } text = { route.text } />
     } else if(route.name === 'Settings') {
       return <Settings navigator = { navigator } />
     }
